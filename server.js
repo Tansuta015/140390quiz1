@@ -1,24 +1,25 @@
-var mysql = require('mysql')
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'dbuser',
-  password : 's3kreee7',
-  database : 'my_db'
-});
-connection.connect()
-
-connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-  if (err) throw err
-
-  console.log('The solution is: ', rows[0].solution)
-})
-
-connection.end()
-
+var express = require('express');
+var app = express();
 app.set('view engine', 'ejs');
 
-app.get('/',function(req,res){
-    res.render('pages/index');
+
+app.get('/Home',function(req,res){
+    res.render('pages/Home');
 });
 
 
+app.get('/student',function(req,res){
+    res.render('pages/student');
+});
+
+
+app.get('/subject',function(req,res){
+    res.render('pages/subject');
+});
+
+
+
+
+
+console.log('App is running at http://localhost:8081');
+app.listen(8081);
